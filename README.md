@@ -11,6 +11,37 @@ An interactive timeline showcasing major AI developments and milestones since 20
 
 ## Project Architecture
 
+### Component Structure
+
+```mermaid
+graph TD
+    A[App.vue] --> B[Timeline.vue]
+    B --> C[TimelineItem.vue]
+    B --> D[TimelineFilter.vue]
+    B --> E[TimelineSearch.vue]
+    C --> F[EventCard.vue]
+    C --> G[EventMedia.vue]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#ddf,stroke:#333,stroke-width:2px
+```
+
+### Data Flow
+
+```mermaid
+graph LR
+    A[events.js] -->|Event Data| B[Timeline.vue]
+    B -->|Filtered Events| C[TimelineItem.vue]
+    D[User Input] -->|Search/Filter| B
+    C -->|Event Details| E[EventCard.vue]
+    
+    style A fill:#fcf,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+```
+
+### Directory Structure
+
 ```
 ai-timeline/
 ├── src/                    # Source code
@@ -28,6 +59,18 @@ ai-timeline/
 │   └── workflows/       # GitHub Actions workflows
 ├── vite.config.js       # Vite configuration
 └── package.json         # Project dependencies
+```
+
+### Deployment Flow
+
+```mermaid
+graph LR
+    A[Source Code] -->|Git Push| B[GitHub Repository]
+    B -->|GitHub Actions| C[Build Process]
+    C -->|Deploy| D[GitHub Pages]
+    
+    style A fill:#dfd,stroke:#333,stroke-width:2px
+    style D fill:#fdd,stroke:#333,stroke-width:2px
 ```
 
 ## Technology Stack
